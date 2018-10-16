@@ -1,0 +1,15 @@
+/* a Btn Styles */
+
+.btn{
+    
+    border: 1px rgba($facebook,.6) outset;
+    color: $link-color;
+    text-decoration: none;
+    &:hover{
+        background-color: $hover;
+    }
+}
+.btn-md{
+    padding: 5px 10px;
+    border-radius: 5px;
+}
