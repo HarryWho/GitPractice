@@ -1,42 +1,96 @@
 /* Navbar */
 
 .navbar{
-    background-color: #3b5998;
+    background-color: $facebook;
     // overflow: hidden;
     height: 63px;
-    position: relative;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    
     a{
-        float: left;
+         float: left;
         display: block;
-        color: #f2f2f2;
+        color: $link-color;
         text-align: center;
         padding: 14px 16px;
         text-decoration: none;
         font-size: 17px;
         &:hover{
-            background-color: #ddd;
+            background-color: $hover;
             color: #000;
         }
     }
     ul{
         padding: 8px 0 0 0 ;
         list-style: none;
+        position: relative;
+    }
+    li{
+        
+        ul{
+            position: absolute;
+            top:50px;
+            left: 0;
+            width: 100%;
+            background: rgba($facebook,1);
+            display: none;
+           
+            li{
+                display: block;
+                padding: 0 2px ;
+                border: 5px  $facebook solid;
+                width: 100%;
+                .profile{
+                    font-family: $cursive;
+                    width: 100%;
+                    text-align: center;
+                    .inline{
+                        display: inline-flex;
+                        flex-basis: auto;
+                        a{
+                            padding: 0;
+                            font-family: $gothic;
+                        }
+                    }
+                }
+                label{
+                    color:$link-color;
+                    font-family: $fawk;
+                }
+                
+            }
+           
+        }
+        &:hover ul{
+            
+            display: block;
+            
+        }
+        // &:hover{
+        //     background: $hover;
+        // }
     }
     
     .navbar-nav{
         position: absolute;
-        right: 10px;
+        right: 0px;
         display: inline-flex;
+        
     }
     .open-slide{
        
         transition: visibility 0.3s ease-in-out;
+        a{
+            font-size: 25px;
+        }
     }
     @media only screen and  (max-width:800px){
         .brand{
            font-size: .8rem;
-            
+           padding-top: 30px;
         }
+        
     }
     .brand{
         font-family:$fawk;

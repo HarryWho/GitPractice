@@ -3,8 +3,14 @@
 @import "base/variables";
 @import "base/normalize";
 
-/* Modules*/
+/* Modules */
+
+@import "modules/btnStyles";
+
+/* Components*/
 
 @import "components/navbar";
 @import "components/sideMenu";
+@import "components/main";
+@import "components/modal";
 

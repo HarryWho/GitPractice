@@ -1,6 +1,38 @@
 /*  Base  */
 /* Fonts */
 @import url("https://fonts.googleapis.com/css?family=Fahkwang|Indie+Flower|Nanum+Gothic");
+:root {
+  --blue: #007bff;
+  --indigo: #6610f2;
+  --purple: #6f42c1;
+  --pink: #e83e8c;
+  --red: #dc3545;
+  --orange: #fd7e14;
+  --yellow: #ffc107;
+  --green: #28a745;
+  --teal: #20c997;
+  --cyan: #17a2b8;
+  --white: #fff;
+  --gray: #6c757d;
+  --gray-dark: #343a40;
+  --primary: #007bff;
+  --secondary: #6c757d;
+  --success: #28a745;
+  --info: #17a2b8;
+  --warning: #ffc107;
+  --danger: #dc3545;
+  --light: #f8f9fa;
+  --dark: #343a40;
+  --breakpoint-xs: 0;
+  --breakpoint-sm: 576px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 992px;
+  --breakpoint-xl: 1200px;
+  --font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+
+/* Colors */
 /* Normalize */
 * {
   padding: 0;
@@ -10,16 +42,41 @@
 }
 
 body {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Fahkwang", sans-serif;
   background-color: #f4f4f4;
 }
 
-/* Modules*/
+/* Modules */
+/* a Btn Styles */
+.btn {
+  border: 1px var(--primary) outset;
+  color: #f2f2f2;
+  text-decoration: none;
+  margin: 0 auto;
+}
+
+.btn:hover {
+  background-color: rgba(51, 144, 187, 0.1);
+}
+
+.btn-md {
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 12px;
+}
+
+.btn-success {
+  background: var(--success);
+}
+
+/* Components*/
 /* Navbar */
 .navbar {
   background-color: #3b5998;
   height: 63px;
-  position: relative;
+  width: 100%;
+  position: fixed;
+  top: 0;
 }
 
 .navbar a {
@@ -33,18 +90,63 @@ body {
 }
 
 .navbar a:hover {
-  background-color: #ddd;
+  background-color: rgba(51, 144, 187, 0.1);
   color: #000;
 }
 
 .navbar ul {
   padding: 8px 0 0 0;
   list-style: none;
+  position: relative;
+}
+
+.navbar li ul {
+  position: absolute;
+  top: 50px;
+  left: 0;
+  width: 100%;
+  background: #3b5998;
+  display: none;
+}
+
+.navbar li ul li {
+  display: block;
+  padding: 0 2px;
+  border: 5px #3b5998 solid;
+  width: 100%;
+}
+
+.navbar li ul li .profile {
+  font-family: "Indie Flower", cursive;
+  width: 100%;
+  text-align: center;
+}
+
+.navbar li ul li .profile .inline {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -ms-flex-preferred-size: auto;
+      flex-basis: auto;
+}
+
+.navbar li ul li .profile .inline a {
+  padding: 0;
+  font-family: "Nanum Gothic", sans-serif;
+}
+
+.navbar li ul li label {
+  color: #f2f2f2;
+  font-family: "Fahkwang", sans-serif;
+}
+
+.navbar li:hover ul {
+  display: block;
 }
 
 .navbar .navbar-nav {
   position: absolute;
-  right: 10px;
+  right: 0px;
   display: -webkit-inline-box;
   display: -ms-inline-flexbox;
   display: inline-flex;
@@ -55,9 +157,14 @@ body {
   transition: visibility 0.3s ease-in-out;
 }
 
+.navbar .open-slide a {
+  font-size: 25px;
+}
+
 @media only screen and (max-width: 800px) {
   .navbar .brand {
     font-size: .8rem;
+    padding-top: 30px;
   }
 }
 
@@ -96,7 +203,7 @@ body {
 
 .side-nav a:hover {
   color: #fff;
-  background-color: rgba(51, 187, 170, 0.1);
+  background-color: rgba(51, 144, 187, 0.1);
 }
 
 .side-nav .btn-close {
@@ -110,15 +217,15 @@ body {
 
 .side-nav .closed-menu {
   position: absolute;
-  visibility: hidden;
+  visibility: visible;
   top: 0;
-  left: -15px;
+  left: -12px;
   -webkit-transition: visibility 0s ease-out;
   transition: visibility 0s ease-out;
 }
 
 .side-nav .closed-menu a {
-  padding: 10px 10px 10px 30px;
+  padding: 10px 240px 10px 30px;
 }
 
 .side-nav .opened-menu {
@@ -127,28 +234,123 @@ body {
 }
 
 .side-nav .opened-menu a {
-  padding: 10px 10px 10px 50px;
+  padding: 10px 10px 10px 55px;
+}
+
+@media only screen and (max-width: 800px) {
+  .side-nav {
+    width: 55px;
+    opacity: .9;
+  }
+  .side-nav a {
+    font-size: 1rem;
+  }
+  .side-nav .closed-menu {
+    visibility: visible;
+  }
+  .side-nav .opened-menu {
+    visibility: hidden;
+  }
 }
 
 #main {
   -webkit-transition: margin .5s ease-in-out;
   transition: margin .5s ease-in-out;
   margin-left: 280px;
-  margin-top: 20px;
+  margin-top: 83px;
+  height: 2000px;
 }
 
 @media only screen and (max-width: 800px) {
-  .side-nav {
-    width: 0px;
-  }
-  .side-nav a {
-    font-size: 1rem;
-  }
   #main {
-    margin-left: 10px;
+    margin-left: 80px;
   }
   #main h1 {
     font-size: 1rem;
   }
+}
+
+.modalDialog {
+  position: fixed;
+  font-family: Arial, Helvetica, sans-serif;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(79, 79, 79, 0.5);
+  z-index: 99999;
+  opacity: 0;
+  -webkit-transition: opacity 400ms ease-in;
+  transition: opacity 400ms ease-in;
+  pointer-events: none;
+}
+
+.modalDialog:target {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.modalDialog h2 {
+  color: #f2f2f2;
+}
+
+.modalDialog > div {
+  width: 400px;
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin: 10% auto;
+  padding: 5px 20px 13px 20px;
+  border-radius: 10px;
+  background: #3b5998;
+  background: -o-linear-gradient(#3b5998, #999);
+}
+
+.modalDialog > div input {
+  padding: 5px;
+  border-radius: 5px;
+  margin: 5px auto;
+}
+
+.modalDialog .inline {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  margin-top: 10px;
+}
+
+.modalDialog .close {
+  background: #606061;
+  color: #FFFFFF;
+  line-height: 25px;
+  position: absolute;
+  right: -12px;
+  text-align: center;
+  top: -10px;
+  width: 24px;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 12px;
+  -webkit-box-shadow: 1px 1px 3px #000;
+  box-shadow: 1px 1px 3px #000;
+}
+
+.modalDialog .close:hover {
+  background: #00d9ff;
+}
+
+.modalDialog span {
+  font-size: .7rem;
+  color: red;
+  margin: 5px auto;
+}
+
+.modalDialog #title h2 {
+  color: var(--success);
 }
 /*# sourceMappingURL=style.css.map */

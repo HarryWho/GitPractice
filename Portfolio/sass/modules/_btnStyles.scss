@@ -2,9 +2,10 @@
 
 .btn{
     
-    border: 1px rgba($facebook,.6) outset;
+    border: 1px $primary outset;
     color: $link-color;
     text-decoration: none;
+    margin: 0 auto;
     &:hover{
         background-color: $hover;
     }
@@ -12,4 +13,8 @@
 .btn-md{
     padding: 5px 10px;
     border-radius: 5px;
+    font-size: 12px
+}
+.btn-success{
+    background: $success;
 }

@@ -7,7 +7,7 @@
     z-index: 1;
     top: 63px;
     left: 0;
-    background-color: #3b5998;// #111;
+    background-color: rgba($facebook,1);// #111;
     opacity:1;
     overflow-x:hidden;
   
@@ -23,7 +23,7 @@
         transition: 0.3s;
         &:hover{
             color: #fff;
-            background-color: rgba(#33bbaa,.1);
+            background-color: $hover;
         }
     }
     .btn-close{
@@ -37,41 +37,40 @@
     }
     .closed-menu{
         position: absolute;
-        visibility: hidden;
+        visibility: visible;
         top: 0;
-        left: -15px;
+        left: -12px;
         transition: visibility 0s ease-out;
         a{
-            padding: 10px 10px 10px 30px;
+            padding: 10px 240px 10px 30px;
         }
     }
     .opened-menu{
         transition: visibility 0s ease-out;
         // margin-left: 25px;
         a{
-            padding: 10px 10px 10px 50px;
+            padding: 10px 10px 10px 55px;
         }
     }
     
 }
-#main{
-    transition: margin .5s ease-in-out;
-    margin-left: 280px;
-    margin-top: 20px;
-    
-}
+
 @media only screen and  (max-width:800px){
     .side-nav{
-        width: 0px;
+        width: 55px;
+        opacity: .9;
         a{
             font-size: 1rem;
         }
-    }
-    #main{
-        margin-left: 10px;
-        h1{
-            font-size: 1rem;
+        .closed-menu{
+            visibility: visible;
         }
+        .opened-menu{
+            visibility : hidden;
+        }
+
     }
+   
+    
     
 }

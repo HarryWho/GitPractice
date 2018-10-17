@@ -1,3 +1,12 @@
+<?php
+    session_start();
+    if(!$_SESSION['logedin']){
+        $_SESSION['logedin']=false;
+        $_SESSION['username']="Guest";
+
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,11 +21,12 @@
     <nav class="navbar">
         <span class="open-slide" id="open-slide">
             <a href="#" onclick="chooseDirection()">
-                <svg width="30" height="30" >
+                <!-- <svg width="30" height="30" >
                     <path d="M0,5,30,5" stroke="#fff" stroke-width="5"/>
                     <path d="M0,14,30,14" stroke="#fff" stroke-width="5"/>
                     <path d="M0,23,30,23" stroke="#fff" stroke-width="5"/>
-                </svg>
+                </svg> -->
+                &#9776;
             </a>
         </span>
         <div class="brand">
@@ -25,7 +35,21 @@
         <ul class="navbar-nav">
             <li><a href="#"><i class="far fa-comment-alt"></i></a></li>
             <li><a href="#"><i class="far fa-envelope"></i></a></li>
-            <li><a href="#"><i class="fas fa-user"></i></a></li>
+            <li><a href="#"><i class="fas fa-user"></i></a>
+                <ul>
+                    <li>
+                        <div class="profile">
+                            <?php echo "<h1>Welcome ".$_SESSION['username']."</h1>" ?>
+                            <div class="inline">
+                                <a href="#openModal" class="btn btn-md">Login</a>
+                                <a href="#registerModal" class="btn btn-md">Register</a>
+                            </div>
+                        </div>
+                        
+
+                    </li>
+                </ul>
+            </li>
             <li><a href="#"><i class="fas fa-cogs"></i></a></li>
         </ul>
     </nav>
@@ -47,41 +71,68 @@
     </div>
     <div id="main">
         <h1>Responsive side menu</h1>
+        wheer am i 
     </div>
+    <?php if(!$_SESSION['logedin']){ ?>
+        <form action="/" method="post">
+        <input type="hidden" name="type" value="login">
 
-    <script>
-        function openSlideMenu(){
-            document.getElementById('closed-menu').style.visibility ='hidden';
-            document.getElementById('opened-menu').style.visibility ='visible';
-            document.getElementById('side-menu').style.width ='250px';
-            document.getElementById('main').style.marginLeft ='280px';
-            // document.getElementById('open-slide').style.visibility ='hidden';
-            
-            
-            
-            // document.getElementById('btn-close').innerHTML = "<<";
-        }
-        function closeSlideMenu(){
-            document.getElementById('opened-menu').style.visibility ='hidden';
-            document.getElementById('closed-menu').style.visibility ='visible';
-            document.getElementById('side-menu').style.width ='50px';
-            document.getElementById('main').style.marginLeft ='80px';
-            // document.getElementById('open-slide').style.visibility='visible';
-            
-           
-
-        }
-        function chooseDirection(){
-            var sideMenu=document.getElementById('side-menu');
-
-            
-            if(sideMenu.style.width =='50px'){
-                openSlideMenu();
-            }else{
-                closeSlideMenu();
-            }
-            
-        }
-    </script>
+            <div id="openModal" class="modalDialog">
+                <div>
+                    <a href="#close" title="Close" class="close">X</a>
+                    <h2>Login</h2>
+                    
+                    <input type="text" name="username" id="username" placeholder="Enter Username">
+                    
+                    <input type="password" name="password" id="password" placeholder="Enter Password">
+                    <div class="inline">
+                        <a href="#" onclick="loginUser()" class="btn btn-md">Login</a>
+                        <a href="#registerModal" class="btn btn-md">Don't have an account yet?</a>
+                    </div>
+                            
+                </div>
+            </div>
+        </form>
+        <form action="/" method="post">
+            <div id="registerModal" class="modalDialog">
+                <div>
+                    <input type="hidden" name="type" value="register">
+                    <a href="#close" title="Close" class="close">X</a>
+                    <h2>Register</h2>
+                    
+                    <input type="text" name="username" id="regusername" placeholder="Enter Username" required>
+                    <span id="usernameError"></span>
+                    <input type="email" name="email" id="email" placeholder="Enter Email" required>
+                    <span id="emailError"></span>
+                    <input type="password" name="password" id="regpassword" placeholder="Enter Password" required>
+                    <span id="passwordError"></span>
+                    <input type="password" name="repassword" id="regrepassword" placeholder="Re-Enter Password" required>
+                    <span id="repasswordError"></span>
+                    <div class="inline">
+                        <a href="#registerModal" class="btn btn-md" onclick="registerUser()">Register</a>
+                        <a href="#openModal" class="btn btn-md">Already have an account?</a>
+                    </div>
+                            
+                </div>
+            </div>
+        </form>
+       
+            <div id="registerSuccessModal" class="modalDialog">
+                
+                <div>
+                    <a href="#close" title="Close" class="close">X</a>
+                    <div id="title">
+                        
+                    </div> 
+                    <div id="content">
+                        
+                    </div>
+                </div>
+            <div>
+        
+        <script src="js/script.js"></script>
+    <?php } ?>
+    <script src="js/animation.js"></script>
+    
 </body>
 </html>

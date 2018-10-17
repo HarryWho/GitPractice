@@ -6,7 +6,7 @@
 	right: 0;
 	bottom: 0;
 	left: 0;
-	background: rgba($hover,0.5);
+	background: rgba($modal,0.9);
 	z-index: 99999;
 	opacity:0;
 	-webkit-transition: opacity 400ms ease-in;
@@ -19,6 +19,7 @@
     }
     h2{
         color:$link-color;
+        font-family: $fawk;
     }
     > div {
         width: 400px;
@@ -62,6 +63,14 @@
         box-shadow: 1px 1px 3px #000;
         &:hover { background: #00d9ff; }
     }
-    
-    
+    span{
+        font-size: .7rem;
+        color: red;
+        margin: 5px auto;
+    }
+    #title{
+        h2{
+            color: $success;
+        }
+    }
 }
