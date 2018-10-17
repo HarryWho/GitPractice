@@ -70,8 +70,10 @@
 
     </div>
     <div id="main">
-        <h1>Responsive side menu</h1>
-        wheer am i 
+        <div>
+            <h1>Responsive side menu</h1>
+            <!-- <?php phpinfo() ?> -->
+        </div>
     </div>
     <?php if(!$_SESSION['logedin']){ ?>
         <form action="/" method="post">
