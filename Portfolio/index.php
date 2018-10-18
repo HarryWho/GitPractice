@@ -1,9 +1,7 @@
 <?php
-    session_start();
-    if(!$_SESSION['logedin']){
-        $_SESSION['logedin']=false;
-        $_SESSION['username']="Guest";
-
+    require_once 'phpModules/core/init.php';
+    if(!Session::exists('user')){
+        Session::put('user','Guest');
     }
 ?>
 
@@ -21,11 +19,7 @@
     <nav class="navbar">
         <span class="open-slide" id="open-slide">
             <a href="#" onclick="chooseDirection()">
-                <!-- <svg width="30" height="30" >
-                    <path d="M0,5,30,5" stroke="#fff" stroke-width="5"/>
-                    <path d="M0,14,30,14" stroke="#fff" stroke-width="5"/>
-                    <path d="M0,23,30,23" stroke="#fff" stroke-width="5"/>
-                </svg> -->
+               
                 &#9776;
             </a>
         </span>
@@ -39,7 +33,7 @@
                 <ul>
                     <li>
                         <div class="profile">
-                            <?php echo "<h1>Welcome ".$_SESSION['username']."</h1>" ?>
+                            <h1>Welcome <?php echo Session::get('user') ?></h1>
                             <div class="inline">
                                 <a href="#openModal" class="btn btn-md">Login</a>
                                 <a href="#registerModal" class="btn btn-md">Register</a>
@@ -72,7 +66,20 @@
     <div id="main">
         <div>
             <h1>Responsive side menu</h1>
-            <!-- <?php phpinfo() ?> -->
+            <?php 
+                //echo Config::get('mysql/host');
+                // $user = DB::getInstance()->get('users', array('userName', '=', 'Calvin')); 
+                // $user=DB::getInstance()->update('users', 3, array(
+                //     'userPassword' => 'newpassword',
+                //     'userEmail' => 'willthisdo42@hotmail.com'
+                    
+                // ));
+                // if(!$user->count()){
+                //     echo 'No User';
+                // }else{
+                //     echo $user->count();
+                // }
+            ?>
         </div>
     </div>
     <?php if(!$_SESSION['logedin']){ ?>
@@ -110,6 +117,7 @@
                     <span id="passwordError"></span>
                     <input type="password" name="repassword" id="regrepassword" placeholder="Re-Enter Password" required>
                     <span id="repasswordError"></span>
+                    <input type="hidden" name="token" id="token" value="<?php echo Token::generate(); ?>">
                     <div class="inline">
                         <a href="#registerModal" class="btn btn-md" onclick="registerUser()">Register</a>
                         <a href="#openModal" class="btn btn-md">Already have an account?</a>
@@ -124,10 +132,16 @@
                 <div>
                     <a href="#close" title="Close" class="close">X</a>
                     <div id="title">
-                        
+                        <h2>Success</h2>
                     </div> 
                     <div id="content">
-                        
+                        <?php
+                            if(Session::exists('success')){
+                               
+                                echo Session::flash('success');
+                                
+                            }
+                        ?>
                     </div>
                 </div>
             <div>

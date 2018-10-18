@@ -68,9 +68,14 @@
         color: red;
         margin: 5px auto;
     }
-    #title{
-        h2{
-            color: $success;
-        }
+   
+}
+#title{
+    h2{
+        color: $success;
     }
+}
+#content{
+    min-height:250px;
+    overflow: auto;
 }
