@@ -65,8 +65,11 @@ function registerUser(){
            
             if(splitStr[0]==='session'){
                 
-                window.location ='index.php#registerSuccessModal';
-                return 1;
+                
+               
+                // document.getElementById('content').innerHTML = splitStr[1];
+                document.location.href ='/index.php#registerSuccessModal'
+                
             }
             for(var i = 0; i < (arr.length); i++)
             {

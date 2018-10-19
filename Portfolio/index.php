@@ -83,7 +83,7 @@
         </div>
     </div>
     <?php if(!$_SESSION['logedin']){ ?>
-        <form action="/" method="post">
+        
         <input type="hidden" name="type" value="login">
 
             <div id="openModal" class="modalDialog">
@@ -101,8 +101,8 @@
                             
                 </div>
             </div>
-        </form>
-        <form action="/" method="post">
+        
+        
             <div id="registerModal" class="modalDialog">
                 <div>
                     <input type="hidden" name="type" value="register">
@@ -125,12 +125,12 @@
                             
                 </div>
             </div>
-        </form>
+        
        
             <div id="registerSuccessModal" class="modalDialog">
                 
                 <div>
-                    <a href="#close" title="Close" class="close">X</a>
+                    <!-- <a href="#close" title="Close" class="close">X</a> -->
                     <div id="title">
                         <h2>Success</h2>
                     </div> 
