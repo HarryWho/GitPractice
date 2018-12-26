@@ -1,21 +1,23 @@
 /* Navbar */
 
 .navbar{
-    background-color: $facebook;
+    background-color: rgba($facebook,1);;
     // overflow: hidden;
     height: 63px;
     width: 100%;
     position: fixed;
     top: 0;
-    
+    border-bottom: 1px outset $link-color;;
+    z-index:999;
     a{
          float: left;
         display: block;
-        color: $link-color;
+        color: $primary;
         text-align: center;
         padding: 14px 16px;
         text-decoration: none;
         font-size: 17px;
+        text-shadow: 1px 1px 1px $link-color;
         &:hover{
             background-color: $hover;
             color: #000;
@@ -27,7 +29,8 @@
         position: relative;
     }
     li{
-        
+        padding-left: 30px;
+        transition: all 0.3s ease-in-out;
         ul{
             position: absolute;
             top:50px;
@@ -35,27 +38,39 @@
             width: 100%;
             background: rgba($facebook,1);
             display: none;
+            border-top-left-radius: 10px;
            
+            border-bottom-left-radius: 10px;
+            //  border: 1px solid $fac;
+             box-shadow: -2px 2px 10px rgba($facebook,.6);
             li{
                 display: block;
                 padding: 0 2px ;
-                border: 5px  $facebook solid;
+                // border: 5px  $facebook solid;
                 width: 100%;
+                color:$modal;
+               
                 .profile{
-                    font-family: $cursive;
+                    font-family: $fawk;
                     width: 100%;
                     text-align: center;
+                   
                     .inline{
                         display: inline-flex;
                         flex-basis: auto;
+                        padding: 10px auto;
+                        margin: 10px auto;
                         a{
                             padding: 0;
-                            font-family: $gothic;
+                            font-family: $fawk;
+                            margin-right: 50px;; 
+                            color: $link-color;
+                            padding: 5px 20px;
                         }
                     }
                 }
                 label{
-                    color:$link-color;
+                    // color:$modal;//$link-color;
                     font-family: $fawk;
                 }
                 
@@ -63,7 +78,7 @@
            
         }
         &:hover ul{
-            
+           opacity: 1; 
             display: block;
             
         }
@@ -76,7 +91,7 @@
         position: absolute;
         right: 0px;
         display: inline-flex;
-        
+        //box-shadow:1px 1px 5px $link-color;
     }
     .open-slide{
        
@@ -97,6 +112,7 @@
         float: left;
         padding-top: 15px;
         padding-left: 20px;
-        color:  #f2f2f2;
+        color: $primary;
+        text-shadow: 1px 1px 1px $link-color;
     }
 }

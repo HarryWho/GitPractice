@@ -1,0 +1,20 @@
+
+.alert{
+    position: absolute;
+    width: 45%;
+    top: 200px;
+    left:300px;
+    height:auto;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 2px 2px 6px rgba(#363535,.5);
+    z-index: 1999
+    p{
+        color:#363535;
+    }
+}
+.alert-success{
+       
+    background-color: rgba(0,230,0,0.1);
+}

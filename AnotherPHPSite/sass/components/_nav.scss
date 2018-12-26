@@ -1,0 +1,53 @@
+.nav{
+    border-bottom: 1px solid #eaeaeb;
+    text-align: right;
+    height:70px;
+    line-height: 70px;
+    background: $dark;
+}
+.menu{
+    margin: 0 30px 0 0 ;
+    a{
+        clear: right;
+        text-decoration: none;
+        color: $light;
+        margin: 0 10px;
+        line-height: 70px;
+        
+    }
+}
+span{
+    color: #54d17a;
+}
+label{
+    margin: 0 40px 0 0;
+    font-size: 26px;
+    font-weight: 900;
+    line-height: 70px;
+    display: none;
+    width: 26px;
+    float: right;
+    color: $light;
+}
+#toggle{
+    display: none;
+}
+@media only screen and (max-width:500px){
+    label{
+        display: block;
+        cursor: pointer;
+    }
+    .menu{
+        text-align: center;
+        width: 100%;
+        display: none;
+        a{
+            display: block;
+            border-bottom:   1px solid #eaeaeb;
+            margin: 0;
+        }
+    }
+    #toggle:checked + .menu{
+        display: block;
+    }
+}

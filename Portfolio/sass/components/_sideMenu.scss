@@ -1,30 +1,41 @@
 /* Side Menu*/
 
 .side-nav{
-    height: calc(100% - 63px);
-    width: 250px;
+   
     position: fixed;
+    height: 100vh;//calc(100% - 63px);
+    width: 250px;
     z-index: 1;
     top: 63px;
     left: 0;
-    background-color: rgba($facebook,1);// #111;
-    opacity:1;
+    background-color: rgba($facebook,.6);// #111;
+    // opacity:.9; 
+    height: 100vh;//calc(100% - 63px);
+    width: 250px;
     overflow-x:hidden;
-  
+    border-right:1px solid black;
     transition: width 0.5s ease-in-out; 
-    
+    z-index: 999;
     a{
         // padding: 10px 10px 10px 50px;
         text-decoration: none;
-        font-family: $cursive;
-        font-size: 1.2rem;
+        font-family: $fawk;
+        font-size: .9rem;
         color: #ccc;
         display: block;
-        transition: 0.3s;
+        transition: hover 0.3s ease;
         &:hover{
+        
             color: #fff;
             background-color: $hover;
         }
+        
+        
+    }
+    .active{
+        color: #fff;
+        background-color: $hover;
+        border: 1px outset rgba($facebook, .1);
     }
     .btn-close{
         position: absolute;
@@ -35,24 +46,109 @@
         margin-left: 150px;
         color: #000;
     }
-    .closed-menu{
-        position: absolute;
-        visibility: visible;
-        top: 0;
-        left: -12px;
-        transition: visibility 0s ease-out;
-        a{
-            padding: 10px 240px 10px 30px;
-        }
-    }
+    //.closed-menu{
+        // position: absolute;
+        // visibility: visible;
+        // top: 0px;
+        // left: -12px;
+        // transition: visibility 0s ease-out;
+        // a{
+        //     padding: 10px 240px 10px 30px;
+        // }
+    //}
     .opened-menu{
         transition: visibility 0s ease-out;
         // margin-left: 25px;
         a{
-            padding: 10px 10px 10px 55px;
+           // padding: 10px 10px 10px 55px;
+           
         }
     }
-    
+    ul{
+       margin-top: 5px auto;
+        list-style: none;
+        position: relative;
+        // .form-control{
+        //     position: relative;
+        //     background:$facebook;
+        //     padding: 10px;
+        //     padding-right: 0px;
+
+        //     width: 100%;
+        //     color:#f4f4f4;
+        //     a{
+        //         position: absolute;
+        //         right: 20px;
+        //         width: 40px;
+        //         height: 40px;
+        //         font-size: 16px;    
+        //         top:12px;
+        //         box-shadow: 1px 1px 1px $primary;
+        //         border-radius: 20px;
+        //         border: 0;
+        //         background-color: $facebook;
+        //         padding-left: 12px;
+        //         padding-top: 8px;
+        //         transition: all 300ms ease-in-out;
+        //     }
+        // }
+        // .form-item{
+            
+        //     text-align: center;
+            
+           
+        // }
+        // .search{
+        //     width: 80%;
+        //     border: 1px solid $primary;
+            
+        //     height: 25px;
+        //     border-radius: 12px;
+        //     margin: 10px auto;
+        //     // padding: 9px 10px;
+        //     transition: visibility  300ms ease-in-out;
+        // }
+        li{
+            
+            a{
+                padding : 4px 30px;
+                // padding-left:30px;
+            }
+            
+        }
+        .submenu{
+            display: none;
+            background-color: $hover;
+            height: 0px;
+            //padding: 0 5px 5px 5px;
+           
+            ul{
+                background: $hover;
+               // padding-bottom: 10px;
+                padding: 0px auto;
+                border-bottom: 1px inset rgba($facebook,.6);
+                li{
+                    //border: 1px inset rgba($side-menu-link-color,.5);
+                    a{
+                        padding: 4px 60px;
+                    }
+                }
+            }
+            
+        }
+        .active{
+            // display: unset;
+            display: block;
+            
+        }
+    }
+    .menu-divs{
+        position: relative;
+        a{
+            color: $side-menu-link-color;
+            //text-shadow: 1px 1px 1px $link-color;
+        }
+    }
 }
 
 @media only screen and  (max-width:800px){
@@ -68,9 +164,32 @@
         .opened-menu{
             visibility : hidden;
         }
+        .form-control{
+            margin-right: 15px;
+        }
 
     }
+    #searchBtn{
+        width: 30px;
+        height: 30px;
+        right: 10px;
+        border-radius: 15px;
+        font-size: 1rem;
+        padding-left: 8px;
+        margin-top: 15px;  
+            
+    }
+   #search{
+       visibility: hidden;
+   }
    
     
-    
 }
+#searchBtn{
+    width: 40px;
+    height: 40px;
+    right: 10px;
+    border-radius: 20px;
+    font-size: 1rem;
+    padding-left: 8px;
+    margin-top: 20px;  }

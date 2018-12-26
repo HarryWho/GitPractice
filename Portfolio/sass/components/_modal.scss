@@ -1,12 +1,12 @@
 .modalDialog {
 
-	position: fixed;
+	position: absolute;
 	font-family: Arial, Helvetica, sans-serif;
-	top: 0;
+	top: 50px;
 	right: 0;
 	bottom: 0;
 	left: 0;
-	background: rgba($modal,0.9);
+	background: rgba($hover,0.1);
 	z-index: 99999;
 	opacity:0;
 	-webkit-transition: opacity 400ms ease-in;

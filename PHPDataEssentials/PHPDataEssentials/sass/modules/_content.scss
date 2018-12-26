@@ -1,0 +1,17 @@
+.content-wrapper{
+   
+    background-image: url('../img/aacu.jpg');
+    background-size: contain;
+    .content{
+        padding-top: 60px;
+        margin: 0 10%;
+        height: 150vh;
+        background: rgba($azurish-white,.95);
+    }
+
+    @media (max-width: 768px){
+        .content{
+            margin: 0;
+        }
+    }
+}

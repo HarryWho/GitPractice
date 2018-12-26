@@ -27,12 +27,15 @@ class DB{
 
     public function query($sql, $params = array()){
         $this->_error=false;
+        
         if($this->_query = $this->_pdo->prepare($sql)){
+           
             $x=1;
             if(count($params)){
                 foreach($params as $param){
-                    $this->_query->bindValue($x,$param);
+                    $this->_query->bindValue($x, $param);
                     $x++;
+                   
                 }
             }
             if($this->_query->execute()){
@@ -41,8 +44,10 @@ class DB{
                 
             }else{
                 $this->_error = true;
+                throw new Exception("Failed to execute");
             }
         }
+        
         return $this;
     }
 
@@ -57,8 +62,11 @@ class DB{
             $value = $where[2];
             if(in_array($operator, $operators)){
                 $sql = "{$action} FROM {$table} WHERE {$field} {$operator} ?";
+                //echo $sql." - " .$value;
                 if(!$this->query($sql,array($value))->error()){
+                   
                     return $this;
+                    
                 }
             }
         }
@@ -66,7 +74,8 @@ class DB{
     }
     public function get($table, $where)
     {
-        return $this->action('SELECT *', $table, $where);
+        
+        return $this->action("SELECT *", $table, $where);
     }
    public function first()
    {
@@ -89,6 +98,7 @@ class DB{
                     $values .= ', '; 
                 }
                 $x++;
+               
             }
            
             $sql="INSERT INTO $table (`" . implode('`, `', $keys). "`) VALUES({$values})"; 

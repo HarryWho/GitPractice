@@ -5,5 +5,5 @@ function escape($string){
 
 function full_url( $s, $use_forwarded_host = false ) {
     return url_origin( $s, $use_forwarded_host ) . $s['REQUEST_URI'];
-  }
+}
   

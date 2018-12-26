@@ -1,0 +1,21 @@
+.list{
+
+    table{
+        table-layout: fixed;
+        caption{
+            caption-side: top;
+            padding-bottom: 20px;
+        }
+        td{
+            padding: 10px;
+            border-bottom: 1px dotted black;    
+            font-family: $mono;         
+            font-size: .9rem;
+            text-align: center;
+        }
+        th{
+           font-family: $mono;
+           font-size: .8rem; 
+        }
+    }
+}

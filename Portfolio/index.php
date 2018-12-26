@@ -1,7 +1,22 @@
 <?php
     require_once 'phpModules/core/init.php';
-    if(!Session::exists('user')){
-        Session::put('user','Guest');
+    
+    if(!Session::exists(Config::get('session/session_name'))){
+        $user = new User('22');
+        Session::put(Config::get('session/session_name'), $user->data()->userId);
+    }
+    $user = new User();
+      // echo $user->data()->userName;
+    
+    $menu = new Menu();
+    $my_menu = $menu->get('menus','menuPermission',$user->data()->userGroup);
+    
+    
+    $path=new Path();
+    //url_origin( $_SERVER, false ) . $_SERVER['REQUEST_URI'];
+    if($path->path()[1]==="logout"){
+        $user->logout();
+        Redirect::to('/');
     }
 ?>
 
@@ -13,18 +28,19 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Side Menu</title>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="<?php echo $path->path()[0] ?>/css/style.css">
 </head>
 <body>
+<!-- Top Navigation Bar -->
     <nav class="navbar">
         <span class="open-slide" id="open-slide">
             <a href="#" onclick="chooseDirection()">
-               
+                 
                 &#9776;
             </a>
         </span>
         <div class="brand">
-            <h1>My Site</h1>
+            <h1>PHP Planet</h1>
         </div>
         <ul class="navbar-nav">
             <li><a href="#"><i class="far fa-comment-alt"></i></a></li>
@@ -33,10 +49,15 @@
                 <ul>
                     <li>
                         <div class="profile">
-                            <h1>Welcome <?php echo Session::get('user') ?></h1>
+                            <h1>Welcome <?php echo $user->data()->userName ?></h1>
                             <div class="inline">
-                                <a href="#openModal" class="btn btn-md">Login</a>
-                                <a href="#registerModal" class="btn btn-md">Register</a>
+                                <?php if(!$user->isLoggedIn()){ ?>
+                                    <a href="#openModal" class="btn btn-md">Login</a>
+                                    <a href="#registerModal" class="btn btn-md">Register</a>
+                                <?php }else{ ?>
+                                    <a href="/logout" class="btn btn-md">Logout</a>
+                                    <a href="#" class="btn btn-md">Profile</a>
+                                <?php } ?>
                             </div>
                         </div>
                         
@@ -47,62 +68,110 @@
             <li><a href="#"><i class="fas fa-cogs"></i></a></li>
         </ul>
     </nav>
-    <div id="side-menu" class="side-nav">
-        <div class="opened-menu" id="opened-menu">
-            <!-- <a href="#" class="btn-close" id="btn-close" onclick="closeSlideMenu()">&times;</a> -->
-            <a href="#">Home</a>
-            <a href="#">About</a>
-            <a href="#">Services</a>
-            <a href="#">Contact</a>
-        </div>
-        <div class="closed-menu" id="closed-menu">
-            <a href="#"><i class="fas fa-home"></i></a>
-            <a href="#"><i class="fas fa-info-circle"></i></a>
-            <a href="#"><i class="fas fa-concierge-bell"></i></a>
-            <a href="#"><i class="fas fa-envelope"></i></a>
-        </div>
+<!-- End Top Navigation -->
 
+<!-- Side Menu -->
+    <div id="side-menu" class="side-nav">
+        
+        <div class="menu-divs">
+            <div class="opened-menu" id="opened-menu">
+                
+                <?php
+                    echo "<ul>";
+                        include_once "phpModules/includes/side_menu.php";
+                    echo "</ul>";
+                ?>
+            </div>
+           
+        </div>
     </div>
     <div id="main">
-        <div>
-            <h1>Responsive side menu</h1>
-            <?php 
-                //echo Config::get('mysql/host');
-                // $user = DB::getInstance()->get('users', array('userName', '=', 'Calvin')); 
-                // $user=DB::getInstance()->update('users', 3, array(
-                //     'userPassword' => 'newpassword',
-                //     'userEmail' => 'willthisdo42@hotmail.com'
-                    
-                // ));
-                // if(!$user->count()){
-                //     echo 'No User';
-                // }else{
-                //     echo $user->count();
-                // }
+       
+            <div class="page-header">
+               
+                <div class="page-tracker">
+                    <?php //echo $user->data()->userName; 
+                        
+                        echo $path->print_path();
+                         
+                       
+                    ?>
+                </div>
+            </div>
+            
+       
+        <div class="content">
+            <?php  
+                //echo $path->path()[1];
+                $page = new Page($path->path());
+                switch($page->first()){
+                    case "administrator":
+                        include_once "phpModules/includes/admin.php";
+                    break;
+                    default:
+                        echo "everything else";
+                    break;
+                }
+                // echo $page->first().$page->seperator().$page->second();
+                
             ?>
+            
         </div>
-    </div>
-    <?php if(!$_SESSION['logedin']){ ?>
+    </div><!-- END MAIN DIV-->
+<!-- End Side Menu -->
+
+    
+<!-- Alert Message -->
+            <?php 
+                
+                if(Session::exists('home')){ ?>
+                <div class="alert alert-success">
+                        
+                        <?php
+                    echo Session::flash('home');   ?>
+                </div>
+            <?php } ?>
+        </div> 
+<!-- End Alert -->
+    
+
+<!-- Modals -->
+            <div id="registerSuccessModal" class="modalDialog">
+                
+                <div>
+                    <a href="#close" title="Close" class="close">X</a>
+                    <div id="title">
+                        <h2>Success</h2>
+                    </div> 
+                    <div id="content">
+                        
+                    </div>
+                </div>
+            </div>
+            <input type="hidden" name="token" id="token" value="<?php echo Token::generate() ?>">
+    <?php if(!$user->isLoggedIn()){ ?>
         
-        <input type="hidden" name="type" value="login">
+        <!-- LOGIN -->
 
             <div id="openModal" class="modalDialog">
+            <input type="hidden" name="type" value="login">
                 <div>
                     <a href="#close" title="Close" class="close">X</a>
                     <h2>Login</h2>
                     
                     <input type="text" name="username" id="username" placeholder="Enter Username">
-                    
+                    <span id="usernameError"></span>
                     <input type="password" name="password" id="password" placeholder="Enter Password">
+                    <span id="passwordError"></span>
                     <div class="inline">
-                        <a href="#" onclick="loginUser()" class="btn btn-md">Login</a>
+                        <a href="#openModal" onclick="loginUser()" class="btn btn-md">Login</a>
                         <a href="#registerModal" class="btn btn-md">Don't have an account yet?</a>
                     </div>
                             
                 </div>
             </div>
         
-        
+        <!-- REGISTER -->
             <div id="registerModal" class="modalDialog">
                 <div>
                     <input type="hidden" name="type" value="register">
@@ -117,7 +186,7 @@
                     <span id="passwordError"></span>
                     <input type="password" name="repassword" id="regrepassword" placeholder="Re-Enter Password" required>
                     <span id="repasswordError"></span>
-                    <input type="hidden" name="token" id="token" value="<?php echo Token::generate(); ?>">
+                    
                     <div class="inline">
                         <a href="#registerModal" class="btn btn-md" onclick="registerUser()">Register</a>
                         <a href="#openModal" class="btn btn-md">Already have an account?</a>
@@ -127,28 +196,13 @@
             </div>
         
        
-            <div id="registerSuccessModal" class="modalDialog">
-                
-                <div>
-                    <!-- <a href="#close" title="Close" class="close">X</a> -->
-                    <div id="title">
-                        <h2>Success</h2>
-                    </div> 
-                    <div id="content">
-                        <?php
-                            if(Session::exists('success')){
-                               
-                                echo Session::flash('success');
-                                
-                            }
-                        ?>
-                    </div>
-                </div>
-            <div>
-        
-        <script src="js/script.js"></script>
+            
+            <script src="js/login.js"></script>
+        <script src="js/register.js"></script>
+    <?php }else{ ?>
+        <script src="js/logout.js"></script>
     <?php } ?>
     <script src="js/animation.js"></script>
-    
+<!-- End Modals -->
 </body>
 </html>

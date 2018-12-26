@@ -1,5 +1,6 @@
 /* Fonts */
 @import url('https://fonts.googleapis.com/css?family=Fahkwang|Indie+Flower|Nanum+Gothic');
+@import url('https://fonts.googleapis.com/css?family=Overpass+Mono');
 :root {
     --blue: #007bff;
     --indigo: #6610f2;
@@ -33,14 +34,16 @@
 $gothic:'Nanum Gothic', sans-serif;
 $cursive:'Indie Flower', cursive;
 $fawk:'Fahkwang', sans-serif;
-
+$mono: 'Overpass Mono', monospace;
 /* Colors */
 
-$hover:rgba(#3390bb,.1);
-$facebook:#3b5998;
+$hover:rgba( #6B2B06,.1);
+$facebook:#2E1F27;//#3b5998;
 $sideMenu:#272121;
-$link-color:#f2f2f2;
-$modal:#4f4f4f;
-
+$link-color: var(--light);//#f2f2f2;
+$modal:#839D9A;//#4f4f4f;
+$side-menu-link-color:$facebook;//var(--info );
 $success:var(--success);
-$primary:var(--primary);
+$primary:#2E1F27; //var(--info);
+$dark-gray:var(--gray-dark);
+$light-gray:var(--gray);

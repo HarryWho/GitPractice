@@ -12,9 +12,13 @@ class Validate{
 
     public function check($src, $items= array())
     {
+      
         foreach($items as $item => $rules){
+           
             foreach($rules as $rule => $rule_value){
+
                 $value = trim($src[$item]);
+               
                 $item=escape($item);
                 switch($rule){
                     case "min":
@@ -34,7 +38,9 @@ class Validate{
                         }
                     break;
                     case 'required':
+                   
                         if(empty($value)){
+                            
                             $this->addError("{$item}Error:{$item} is required");
                         }
                     break;

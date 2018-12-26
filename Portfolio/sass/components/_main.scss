@@ -1,8 +1,37 @@
 #main{
+   
     transition: margin .5s ease-in-out;
     margin-left: 280px;
-    margin-top: 83px;
-    height: 2000px;
+    width: calc(100% - 300px);
+    height: 100vh;
+    .page-header{
+        position: fixed;
+        margin-top: 63px;
+        width: 33vw;//calc(100% - 300px);
+        height: 40px;
+        padding-bottom: 10px;
+        // border-bottom: 1px dotted $facebook;
+        z-index:0 ;
+        // .page-title{
+        //     position: absolute;
+        //     left: 10px;
+        //     h1{
+        //         padding-top: 4px;
+        //         color: var(--gray);
+        //         opacity: .6;
+        //         font-size: 1.4rem;
+        //     }
+        // }
+        .page-tracker{
+            position: absolute;
+            top: 10px;
+            left: 0px;
+            text-transform: uppercase;
+            font-family: $fawk;
+            font-size: .8rem
+        }
+    }
+    
 }
 @media only screen and  (max-width:800px){
     #main{

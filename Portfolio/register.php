@@ -3,8 +3,8 @@
         
     if(Input::exists()){
         // if(Token::check(Input::get('token'))){
-        //    echo Input::get('token')." --- ". Session::get('token');
-       // echo full_url( $_SERVER ) ;
+        //     Input::get('token')." --- ". Session::get('token');
+       //  full_url( $_SERVER ) ;
             $validate = new Validate();
         
             $validation = $validate->check($_POST, array(
@@ -31,51 +31,46 @@
         
             if($validation->passed()){
                 $user = new User();
-                echo $salt = Hash::salt(32);
-                //exit;
+                //$salt = Hash::salt(32);
+               
                 try{
-                    $user->create(array(
-                        'userName' => '',
-                        'userEmail' => '',
-                        'userPassword' => '',
+                   if($user->create(array(
+                        'userName' => Input::get('username'),
+                        'userEmail' => Input::get('email'),
+                        'userPassword' => Hash::make(Input::get('password')),
                         'userSalt' => '',
-                        'userJoined' => '',
-                        'userGroup' => '',
-
-
-                    ));
+                        'userJoined' => date('Y-m-d H:i:s'),
+                        'userGroup' => 1
+                    ))){
+                        //Session::put('username', Input::get('username'));
+                        Session::flash('home',
+                            "<p>Thank you " .Input::get('username') ." </p><p>You have successfully registered</p>
+                            <p>
+                            <br />
+                                We have sent an email to the following address
+                            </p>
+                            <p>
+                            <br />".
+                                Input::get('email')
+                            ."</p>
+                            <p>
+                            <br />
+                                Please follow the link sent in the email to validate you subscription
+                            </p>
+                            <p>
+                            <br />
+                                <a href='/' class='btn btn-md btn-success'>OK!</a>
+                            </p>
+                        ");
+                        //Redirect::to('/');
+                        echo "success:;";
+                    }
                 }catch(Exception $e){
                     die($e->getMessage());
                 }
-            //     if(Session::exists('user')){
-            //         Session::delete('user');
-            //         Session::put('user',Input::get('username'));
-            //     }
-                
-            //     Session::flash('success',
-            //         "<p>Thank you " .Input::get('username') ." </p><p>You have successfully registered</p>
-            //         <p>
-            //         <br />
-            //             We have sent an email to the following address
-            //         </p>
-            //         <p>
-            //         <br />".
-            //               Input::get('email')
-            //         ."</p>
-            //         <p>
-            //         <br />
-            //             Please follow the link sent in the email top validate you subscription
-            //         </p>
-            //         <p>
-            //         <br />
-            //             <a href='#close' class='btn btn-md btn-success'>OK!</a>
-            //         </p>
-            //     ");
+           
+                 
                
-               
-            // //     header('Location: index.php#registerSuccessModal');
-            // //    return false;
-            //     echo "session:;";
             }else{
                 $fmsg='';
                 $x=1;
