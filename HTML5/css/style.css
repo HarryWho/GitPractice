@@ -29,5 +29,11 @@ header {
 
 header nav {
   margin: 0 100px;
+  position: fixed;
+}
+
+header nav .menu {
+  position: absolute;
+  right: 0;
 }
 /*# sourceMappingURL=style.css.map */

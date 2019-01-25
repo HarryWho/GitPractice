@@ -5,5 +5,22 @@ header{
     box-shadow: 1px 1px 5px rgba($link,.4);
     nav{
         margin: 0 100px;
+        position: fixed;
+        .brand{
+            
+        }
+        .menu{
+            position: absolute;
+            right: 0;
+        }
     } 
+}
+ul{
+
+    li{
+
+        a{
+
+        }
+    }
 }

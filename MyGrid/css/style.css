@@ -1,0 +1,87 @@
+/* Base Styles */
+/* Fonts */
+@import url("https://fonts.googleapis.com/css?family=Merriweather:400,700|Montserrat");
+/* Colors */
+/* Box Styling */
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+body {
+  background: #f6f1ed;
+  height: 150vh;
+}
+
+/* Module styles */
+/* Components styles */
+header {
+  width: 100%;
+  height: 50px;
+  position: fixed;
+  background: #30231d;
+  border-bottom: 1px inset #30231d;
+  z-index: 1000;
+}
+
+nav {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 0 50px;
+  background: #50413c;
+  border: 0px outset;
+  border-bottom-right-radius: 15px;
+  border-bottom-left-radius: 15px;
+  -webkit-box-shadow: 1px 1px 1px rgba(48, 35, 29, 0.2);
+          box-shadow: 1px 1px 1px rgba(48, 35, 29, 0.2);
+}
+
+.brand {
+  color: #f6f1ed;
+  padding: 10px;
+}
+
+.brand h1 {
+  font-size: 2rem;
+  color: rgba(246, 241, 237, 0.4);
+  text-shadow: 1px 1px 1px #30231d;
+}
+
+.menu {
+  position: absolute;
+  right: 0;
+  font-family: "Merriweather", serif;
+}
+
+.menu ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  list-style: none;
+}
+
+.menu li {
+  padding: 20px;
+}
+
+.menu li a {
+  font-size: .9rem;
+  color: rgba(246, 241, 237, 0.4);
+  text-decoration: none;
+  text-shadow: 1px 1px 1px #30231d;
+}
+
+/* SideBar */
+.side-bar {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 250px;
+  height: 100vh;
+  background: rgba(80, 65, 60, 0.5);
+}
+/*# sourceMappingURL=style.css.map */
