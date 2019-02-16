@@ -1,6 +1,6 @@
 header{
     position: fixed;
-    
+    padding: 10px 100px;
     background: black;
     top: 0;
     left: 0;
@@ -12,8 +12,11 @@ header{
     display: flex;
     
 }
-menu{
+.menu{
     ul{
-        list-style: none;
+        list-style-type: none;
+        li{
+           display: inline-block;
+        }
     }
 }

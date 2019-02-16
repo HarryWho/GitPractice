@@ -1,5 +1,6 @@
 header {
   position: fixed;
+  padding: 10px 100px;
   background: black;
   top: 0;
   left: 0;
@@ -14,8 +15,12 @@ header {
   display: flex;
 }
 
-menu ul {
-  list-style: none;
+.menu ul {
+  list-style-type: none;
+}
+
+.menu ul li {
+  display: inline-block;
 }
 
 form {
