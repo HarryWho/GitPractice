@@ -1,6 +1,5 @@
 header {
   position: fixed;
-  padding: 10px 100px;
   background: black;
   top: 0;
   left: 0;
@@ -13,6 +12,10 @@ header {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin: 0 150px;
 }
 
 .menu ul {
@@ -21,6 +24,7 @@ header {
 
 .menu ul li {
   display: inline-block;
+  margin-left: 50px;
 }
 
 form {

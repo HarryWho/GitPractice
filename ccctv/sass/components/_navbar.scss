@@ -1,6 +1,6 @@
 header{
     position: fixed;
-    padding: 10px 100px;
+    
     background: black;
     top: 0;
     left: 0;
@@ -10,13 +10,16 @@ header{
 }
 .navbar{
     display: flex;
-    
+    justify-content: space-between;
+    margin: 0 150px; 
 }
 .menu{
+    
     ul{
         list-style-type: none;
         li{
            display: inline-block;
+           margin-left:50px;
         }
     }
 }
