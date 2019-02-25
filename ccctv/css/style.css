@@ -27,6 +27,16 @@ header {
   margin-left: 50px;
 }
 
+.menu a {
+  text-decoration: none;
+  color: #ee6352;
+}
+
+.brand h3 {
+  margin-top: 10px;
+  color: #ee6352;
+}
+
 form {
   position: relative;
   width: 100%;

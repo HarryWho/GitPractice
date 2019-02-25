@@ -1,0 +1,31 @@
+.content-wrapper{
+    height: 100vh;
+    padding-top: 60px;
+    width: 100vw;
+    
+    position: fixed;
+    background: url('/assets/img/astronomy-constellations-cosmos-1906658.jpg') no-repeat bottom;
+    background-attachment: fixed;
+    background-size: cover;
+    .breadcrumb{
+        margin: -10px;
+        padding: 15px 25px;
+        position: fixed;
+        // border-bottom-right-radius: 50px;
+        color: bisque;
+        background: rgba(green, 0);
+        width: 300px;
+        height: calc(100vh - 50px);
+        text-transform: uppercase;
+        a{
+            text-decoration: underline;
+            text-decoration-color: red;
+             color: bisque;
+        }
+    }
+    
+}
+.content{
+    margin: 0 150px;
+    height: 250vh;
+}

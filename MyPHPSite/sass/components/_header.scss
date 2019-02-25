@@ -1,0 +1,45 @@
+header{
+    position: fixed;
+    width: 100%;
+    height: 50px;
+    background: rgba(green,.0);
+    z-index: 999;
+}
+.navbar{
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 100px;
+    ul{
+        list-style: none;
+        display: inline-flex;
+        li{
+            
+            margin-top: 5px;
+            a{
+                text-decoration: none;
+                font-size: 1.1rem;
+                color: bisque;
+                padding: 15px 30px;
+                text-transform: uppercase;
+                text-shadow: 1px 1px 1px rgba(red,.5);
+                &:hover{
+                    background: rgba(green,.5);
+                }
+
+            }
+            .active{
+                background: rgba(green,.3);
+                border:1px;
+                box-shadow: 1px 1px 1px green ;
+            }
+        }
+    }
+}
+.brand{
+    color: bisque;
+    h1{
+        text-transform: uppercase;
+        font: 1.5em sans-serif;
+        text-shadow: 1px 1px 10px rgba(red,.5);
+    }
+}
