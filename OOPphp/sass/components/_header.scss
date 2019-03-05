@@ -1,0 +1,36 @@
+header{
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 50px;
+    background: rgba($green,.8);
+}
+nav{
+    display: flex;
+    padding: 10px 40px;
+    justify-content: space-between;
+} 
+
+.navbar{
+    ul{
+        list-style: none;
+        padding-top: 5px;
+        li{
+            display: inline-block;
+            margin-left: 10px;
+            a{
+                font-family: $robotocondensed;
+                text-decoration: none;
+                text-transform: uppercase;
+                font-weight: 400;
+                color: rgba($brown, .8);
+                text-shadow: 1px 1px 1px rgba($black, .9);
+            }
+        }
+    }
+}
+.brand{
+    font-family: $laila;
+    color: rgba($black,.8);  
+    text-shadow: 1px 1px 2px rgba($brown,.4);
+}

@@ -1,0 +1,94 @@
+.calendar-container{
+    position: relative;
+    width: 100%;
+    transition: all .300s ease-in-out;
+    overflow: hidden;
+    display: block;
+    @media only screen and(max-width:640px){
+        //display: none;
+        
+        width: 20px;
+        //height: 20px;
+    }
+    
+}
+.calendar{
+    width: 95%;
+    border-spacing: 0px;
+    border:0;
+    border-radius: 5px;
+    margin: 5px 0;
+    box-shadow: 3px 3px 15px rgba($black, .2);
+    opacity: 1;
+    overflow: hidden;
+    transition: all .300s ease-in-out;
+    @media only screen and(max-width:640px){
+        position: absolute;
+        opacity: 0;
+        
+    }
+    caption{
+
+        .cal-head-container{
+            display: flex;
+            justify-content: space-between;
+            padding: 10px;
+            border: 0;
+            &> div{
+                font-family: $laila;
+                text-shadow: 1px 1px 1px rgba($black,.9);
+                &:nth-of-type(even){
+                    text-shadow: 1px 1px 1px rgba($brown,.3);
+                }
+            }
+        }
+        background:rgba($green, .8);
+        font-weight: 900;
+        
+        color:$black;
+    
+
+        text-transform: uppercase;
+        // box-shadow: 1px 1px 5px rgba(black,.5);
+        a{
+            font-size: .9em;
+            padding: 10px auto;
+        color:rgba($brown, .5);
+
+        }
+    }
+    td{
+        font-family: $robotocondensed;
+        text-align: center;
+        width: 14%;
+        height: 20px;
+        box-shadow: 1px 1px 5px rgba($black, .2);
+        text-shadow: 1px 1px 1px rgba($black, .9);
+    }
+    .day{
+        font-weight: 900;
+        color: rgba($brown, 1);
+        font-size: .6rem;
+    }
+    .header{
+        background: rgba($green, .9);//#2e2e2e;
+        color: rgba($light-gray,.4);
+        font-size: .75em;
+        text-shadow: 1px 1px 1px rgba($black,.9);
+    }
+    tr:nth-of-type(odd) {
+        background-color:rgba($light-gray, .3);
+      }
+      tr:nth-of-type(even) {
+        background-color:rgba($lighter-gray,.3);
+      }
+    .today{
+        border: 1px outset transparent;
+        box-shadow: 1px 1px 15px rgba($brown, 1);
+    }
+    .lastmonth{
+        font-size: .6rem;
+        font-weight: 900;
+        color: rgba($brown, .5);
+    }
+}
