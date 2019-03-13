@@ -1,0 +1,112 @@
+/* Import Base Files */
+/* Base */
+/* Variables*/
+/* Base */
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+/* Import Layouts Files */
+/* Layouts */
+/*---------*/
+/* Navigation Layout */
+.nav-wrapper {
+  background: #30231d;
+}
+
+.nav-wrapper nav {
+  margin: 0 10%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.nav-wrapper .brand {
+  color: #cc3914;
+  margin-top: 5px;
+}
+
+.nav-wrapper .menu ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  list-style: none;
+}
+
+.nav-wrapper .menu ul li {
+  padding: 10px 20px;
+}
+
+.nav-wrapper .menu ul li a {
+  color: #cc3914;
+  text-decoration: none;
+}
+
+.nav-wrapper .menu ul li a:hover {
+  color: rgba(204, 57, 20, 0.8);
+}
+
+/* Import Layouts Files */
+/* Tabs */
+/* TABS */
+/* Calendar */
+.calendar-wrapper {
+  width: 100%;
+  height: 100vh;
+  background: #50413c;
+  padding-top: 20px;
+}
+
+.calendar-wrapper .calendar {
+  width: 90%;
+  margin: 0px auto;
+  border: 1px solid #f6f1ed;
+}
+
+.calendar-wrapper .calendar td {
+  text-align: center;
+  height: 80px;
+}
+
+.calendar-wrapper .calendar .day {
+  color: #cc3914;
+  -webkit-box-shadow: 0px 0px 1px rgba(246, 241, 237, 0.5);
+          box-shadow: 0px 0px 1px rgba(246, 241, 237, 0.5);
+}
+
+.calendar-wrapper caption {
+  font-size: 1.4em;
+  color: #f6f1ed;
+}
+
+.calendar-wrapper caption a {
+  color: #cc3914;
+}
+
+.calendar-wrapper .cal-head-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+.calendar-wrapper .header {
+  background: #cc3914;
+}
+
+.calendar-wrapper .lastmonth {
+  color: rgba(246, 241, 237, 0.2);
+}
+
+.calendar-wrapper .today {
+  -webkit-box-shadow: 1px 1px 20px #f6f1ed;
+          box-shadow: 1px 1px 20px #f6f1ed;
+}
+/*# sourceMappingURL=style.css.map */
